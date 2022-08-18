@@ -1,0 +1,10 @@
+[athena]
+host=athena.cs.mtholyoke.edu
+folder=
+user=
+scheme=sftp
+share=
+domain=
+path=
+color=#bf090000ffff
+port=22

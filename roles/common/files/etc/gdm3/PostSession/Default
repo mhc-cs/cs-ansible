@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/scripts/cleanHome.sh
+exit 0

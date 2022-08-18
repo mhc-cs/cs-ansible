@@ -1,0 +1,18 @@
+---
+  - name: update repos
+    apt:
+      update_cache: yes
+
+  - name: install apt packages
+    apt:
+      state: present
+      pkg: ['arduino', 'chezscheme', 'chromium-browser', 'cifs-utils', 'classicmenu-indicator', 'clojure', 'curl', 'dconf-editor', 'dconf-tools', 'eclipse', 'espeak', 'filezilla', 'gdal-bin', 'gigolo', 'gimp', 'git', 'grass', 'gummi', 'htop', 'imagemagick', 'indicator-multiload', 'inkscape', 'jekyll', 'keepassx', 'libcanberra-gtk-module', 'liblas-bin', 'libopencv-dev', 'libpq-dev', 'libspatialite-dev', 'mapserver-bin', 'marble', 'mercurial', 'openvpn', 'pandoc', 'pgadmin3', 'postgresql', 'python-dev', 'python-gdal', 'python-mapscript', 'python-matplotlib', 'python-opencv', 'python-psutil', 'python-psycopg2', 'python-samba', 'python3-apt', 'python3-dev', 'python3-pip', 'qgis', 'r-base', 'r-recommended', 'racket', 'rdesktop', 'ruby-dev', 'spim', 'spyder', 'sublime-text', 'subversion', 'sysstat', 'texlive-fonts-recommended', 'texlive-full', 'texlive-latex-base', 'texlive-latex-extra', 'texlive-latex-recommended', 'texmaker', 'texworks', 'unity-tweak-tool', 'vagrant', 'vim', 'virtualbox', 'whois', 'wireshark', 'xclip']
+      update_cache: yes 
+      cache_valid_time: 3600 
+    
+# test     
+
+  - name: cleanup time
+    apt: autoclean=yes autoremove=yes
+    
+

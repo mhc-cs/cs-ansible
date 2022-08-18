@@ -1,0 +1,3 @@
+---
+  - name: run prey install script
+    command: /scripts/installPrey.sh

@@ -1,0 +1,12 @@
+---
+  - name: set favorite apps
+    dconf:
+      key: '/org/gnome/shell/favorite-apps'
+      value: "['org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'org.gnome.Terminal.desktop', 'eclipse_eclipse.desktop', 'firefox.desktop', 'google-chrome.desktop', 'atom_atom.desktop', 'sublime_text.desktop', 'bluej.desktop', 'gnome-control-center.desktop', 'gnome-system-monitor_gnome-system-monitor.desktop', 'yelp.desktop', 'gigolo.desktop']"
+      state: present
+
+  - name: power management settings
+    dconf:
+      key: '/org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout'
+      value: "1800"
+      state: present

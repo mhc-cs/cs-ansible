@@ -1,0 +1,6 @@
+---
+  - name: install BlueJ package
+    apt:
+      deb: https://www.bluej.org/download/files/BlueJ-linux-412.deb
+      state: present
+

@@ -1,0 +1,59 @@
+---
+  - hosts: localhost
+    pre_tasks:
+      # - name: update repositories
+      #   apt: update_cache=yes
+ 
+    tasks:
+      - name: intial setup
+        include: tasks/base-files.yml
+
+      - name: install sublimetext
+        include: tasks/sublimetext.yml
+
+      - name: install google chrome 
+        include: tasks/chrome.yml
+
+      - name: install anaconda 
+        include: tasks/anaconda.yml
+
+      - name: install many apt pkgs
+        include: tasks/apt-packages.yml
+
+      - name: install Open CV dependencies
+        include: tasks/open-CV-dependencies.yml
+
+## NOT IN USE
+#       # - name: build chez-scheme
+#       #   include: tasks/build-chez-scheme.yml
+
+#      - name: install py-packages ## disabled 8/16/2021
+#        include: tasks/py-packages.yml  ### disabling this fixed the problem, but we still need to install the py packages somehow
+
+#      - name: install BlueJ
+#        include: tasks/deb-bluej.yml  
+
+      - name: install Atom
+        include: tasks/atom-snap.yml
+
+      - name: install eclipse
+        include: tasks/eclipse-snap.yml
+
+      - name: add cs guest user
+        include: tasks/users.yml
+      
+      - name: setup cron jobs
+        include: tasks/crontab.yml
+
+## NOT IN USE
+      # - name: set dock favorites
+      #   include: tasks/dconf.yml
+
+    post_tasks:
+      - name: set hostname
+        shell: /scripts/hostname-bkgd.sh
+
+## once per computer (or after re-imaging)
+      # - name: prey setup
+      #   include: tasks/prey.yml
+

@@ -1,0 +1,38 @@
+---
+  - name: build chez-scheme
+    set_fact:
+      chez_src_path: /usr/local/src/ChezScheme
+     
+    tasks:
+    - name: install chez-scheme dependencies
+      apt: 
+        name: " {{ item }} "
+        state: present
+        update_cache: yes
+      with_items:
+         - make
+         - gcc
+         - libncurses5-dev
+         - xorg-dev
+      
+    - name: create some directories
+      file: 
+        path: " {{ chez_src_path }} "
+        state: directory
+            
+    - name: clone chez-scheme repo
+      git:
+        repo: https://github.com/cisco/ChezScheme.git
+        dest: " {{ chez_src_path }} "
+        version: master
+        
+    - name: configure install
+      command: ./configure 
+      args:
+        chdir: " {{ chez_src_path }} "
+        
+    - name: install chez-scheme
+      shell: make && make install
+      args:
+        chdir: " {{ chez_src_path }} "
+          

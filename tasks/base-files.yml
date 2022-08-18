@@ -1,0 +1,25 @@
+---
+  - name: copy base files
+    synchronize:
+      src: roles/common/files/
+      dest: /
+      recursive: yes
+
+  - name: archive permissions
+    file:
+      path: /scripts/
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+      recurse: yes
+
+  - name: scripts permissions
+    file:
+      path: /archive/ 
+      state: directory
+      owner: root
+      group: csadmin
+      mode: 0772
+      recurse: yes
+

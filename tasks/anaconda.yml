@@ -1,0 +1,15 @@
+---
+  - name: Check for anaconda
+    stat:
+      path: /usr/bin/anaconda3
+    register: ana
+
+  - name: download anaconda installer
+    get_url:
+      url: https://repo.anaconda.com/archive/Anaconda3-5.2.0-Linux-x86_64.sh
+      dest: /tmp/Anaconda3-5.2.0-Linux-x86_64.sh
+      mode: 0770
+
+  - name: install anaconda
+    command: 'bash /tmp/Anaconda3-5.2.0-Linux-x86_64.sh -b -p /usr/bin/anaconda3'
+    when: ana.stat.exists == False

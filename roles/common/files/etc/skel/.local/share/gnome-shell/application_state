@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<application-state>
+  <context id="">
+    <application id="eclipse_eclipse.desktop" open-window-count="0" score="1" last-seen="1531834959"/>
+    <application id="gnome-terminal.desktop" open-window-count="0" score="0" last-seen="0"/>
+    <application id="org.gnome.Terminal.desktop" open-window-count="1" score="22" last-seen="1531835078"/>
+    <application id="sublime_text.desktop" open-window-count="0" score="0" last-seen="1531834965"/>
+    <application id="gnome-initial-setup.desktop" open-window-count="0" score="0" last-seen="1531834805"/>
+    <application id="google-chrome.desktop" open-window-count="0" score="6" last-seen="1531835029"/>
+  </context>
+</application-state>

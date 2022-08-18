@@ -1,0 +1,33 @@
+---
+  - name: update repos
+    apt:
+      update_cache: yes
+
+  - name: install apt packages
+    apt:
+      state: present
+      pkg: "{{ item }}"
+      update_cache: yes 
+    with_items:
+        - build-essential
+        - cmake
+        - gfortran
+        - libatlas-base-dev
+        - libavcodec-dev
+        - libavformat-dev
+        - libgtk-3-dev
+        - libjpeg8-dev
+        - libpng-dev
+        - libswscale-dev
+        - libtiff5-dev
+        - libv4l-dev
+        - libx264-dev
+        - libxvidcore-dev
+        - pkg-config
+        - python2.7-dev
+        - python3.6-dev
+
+  - name: cleanup time
+    apt: autoclean=yes autoremove=yes
+
+       

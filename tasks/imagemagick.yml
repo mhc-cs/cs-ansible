@@ -1,0 +1,29 @@
+---
+  - name: Check for ImageMagick
+    stat:
+      path: /usr/local/bin/magick
+    register: im
+
+  - name: Install ImageMagick
+    block:
+      - apt_repository:
+          repo: deb-src http://us.archive.ubuntu.com/ubuntu/ bionic main restricted
+          state: present
+
+      - file:
+          path: /tmp/ImageMagick/ 
+          state: directory
+          mode: 0775
+
+      - unarchive:
+          src: https://www.imagemagick.org/download/ImageMagick.tar.gz
+          dest: /tmp/ImageMagick
+          mode: 0775
+          creates: no
+          remote_src: yes
+          extra_opts: [--strip-components=1]
+
+      - command: /sbin/ldconfig /usr/local/lib
+
+    when: im.stat.exists == False
+

@@ -1,0 +1,4 @@
+---
+  - name: install VScode via snap
+    command: snap install code --classic
+

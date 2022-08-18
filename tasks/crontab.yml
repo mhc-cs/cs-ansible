@@ -1,0 +1,34 @@
+---
+
+- name: install cron job (ansible-pull)
+  cron: 
+    user: root
+    name: "ansible every 20 minutes" 
+    minute: "*/20"
+    job: "/scripts/ansible_pull.sh  >> /var/log/ansible-pull.log 2>&1 " 
+    state: present
+
+- name: nightly reboot 4 am
+  cron:
+    user: root
+    name: "4 am reboot"
+    hour: "4"
+    minute: "0"
+    job: "/sbin/shutdown -r now "
+    state: present
+
+- name: ansible at startup
+  cron:
+    user: root
+    name: "ansible @startup" 
+    special_time: reboot
+    job: "/scripts/ansible_pull.sh  >> /var/log/ansible-pull.log 2>&1 " 
+    state: present
+
+- name: wake up for the reboot
+  cron:
+    user: root
+    name: "wake up at 3:59 am"
+    special_time: reboot
+    job: "/scripts/rtcwake.sh" 
+    state: present

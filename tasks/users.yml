@@ -1,0 +1,23 @@
+---
+- name: Add CS Guest
+  user:
+    name: csguest
+    comment: CS Guest
+    uid: 1234
+    password: 'U6aMy0wojraho'  # = null
+#        password: '.6Erqr7oTV3nE' # = compsci1234
+    state: present
+    shell: /bin/bash       # Defaults to /bin/bash
+    system: no             # Defaults to no
+    createhome: yes        # Defaults to yes
+    skeleton: /etc/skel
+    home: /home/csguest  # Defaults to /home/<username>
+
+- name: set guest user home permissions
+  file:
+    path: /home/csguest
+    owner: csguest
+    group: csadmin
+    mode: 0770
+    recurse: yes
+
